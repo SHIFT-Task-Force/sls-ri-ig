@@ -18,5 +18,5 @@ The Server needs to be initialized with ValueSets using the [SLS Load ValueSets 
 
 ## Tagging Data Operation
 
-The Server supports tagging data with legal tags using the [SLS Tag Data Operation Definition](OperationDefinition-security-label.html). This operation allows for the application of legal tags to FHIR resources, ensuring compliance with the SLS framework.
+The Server supports tagging data with legal tags using the [SLS Tag Data Operation Definition](OperationDefinition-sls-tag.html). This operation allows for the application of legal tags to FHIR resources, ensuring compliance with the SLS framework.
 

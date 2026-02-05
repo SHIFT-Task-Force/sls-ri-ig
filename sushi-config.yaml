@@ -58,9 +58,9 @@ resources:
     CapabilityStatement/fhir-sls-server:
         name: "SLS FHIR Server Capability Statement"
         description: "Capability Statement for the SLS FHIR Server"
-    OperationDefinition/security-label:
-        name: "Security Label Operation Definition"
-        description: "Operation Definition for applying security labels"
+    OperationDefinition/sls-tag:
+        name: "SLS Tag Data Operation Definition"
+        description: "Operation Definition for applying security labels to the data passed in according to the loaded ValueSets."
     OperationDefinition/sls-load-valuesets:
         name: "SLS Load ValueSets Operation Definition"
         description: "Operation Definition for loading SLS ValueSets. This is used to populate the server with the necessary ValueSets for SLS."
