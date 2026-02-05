@@ -1,0 +1,12 @@
+﻿{
+	"name": "shift.template",
+	"type": "fhir.template",
+	"license": "CC-BY-1.0",
+	"description": "SHIFT-Task-Force IG Template",
+	"author": "http://github.com/SHIFT-Task-Force",
+	"version": "current",
+	"base": "fhir.base.template",
+	"dependencies": {
+		"fhir.base.template": "current"
+	}
+}

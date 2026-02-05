@@ -1,0 +1,67 @@
+# ╭──────────────────────────────────────ImplementationGuide───────────────────────────────────────╮
+# │  The properties below are used to create the ImplementationGuide resource. For a list of       │
+# │  supported properties, see: https://fshschool.org/docs/sushi/configuration/                    │
+# ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+id: SHIFT-Task-Force.sls-ri
+canonical: http://SHIFT-Task-Force.github.io/sls-ri
+name: ShiftSlsRi
+title: "SHIFT SLS Reference Implementation Guide"
+description: "A FHIR Implementation Guide containing the FHIR Definitions for the Reference Implementation of SLS."
+status: active
+version: 0.1.0
+fhirVersion: 4.0.1
+copyrightYear: 2025+
+releaseLabel: ci-build
+publisher:
+  name: SHIFT-Task-Force
+  url: http://shift-project.org
+license: CC-BY-4.0
+jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
+
+parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters
+  path-resource:
+    - fsh-generated/resources
+    - input/resources
+#  path-pages:
+#    - input/pagecontent
+#    - fsh-generated/includes
+  show-inherited-invariants: 'false'
+  usage-stats-opt-out: 'false'
+  logging: progress
+  shownav: 'true'
+  active-tables: 'false'
+  apply-contact: 'true'
+  apply-jurisdiction: 'true'
+  apply-publisher: 'true'
+  apply-version: 'true'
+
+
+# ╭────────────────────────────────────────────pages───────────────────────────────────────────────╮
+# │  The pages property corresponds to IG.definition.page.                                         │
+# ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+pages:
+  index.md:
+    title: "SHIFT SLS-IG Home"
+  download.md:
+    title: "About and Download"
+
+
+# ╭────────────────────────────────────────────menu.xml────────────────────────────────────────────╮
+# │  To use a provided input/includes/menu.xml file, delete the "menu" property below.             │
+# ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+menu:
+  Home: index.html
+  Artifacts: artifacts.html
+  About: download.html
+
+resources:
+    CapabilityStatement/fhir-sls-server:
+        name: "SLS FHIR Server Capability Statement"
+        description: "Capability Statement for the SLS FHIR Server"
+    OperationDefinition/security-label:
+        name: "Security Label Operation Definition"
+        description: "Operation Definition for applying security labels"
+    OperationDefinition/sls-load-valuesets:
+        name: "SLS Load ValueSets Operation Definition"
+        description: "Operation Definition for loading SLS ValueSets. This is used to populate the server with the necessary ValueSets for SLS."
+
