@@ -16,6 +16,10 @@ The Server CapabilityStatement for this FHIR Server implementation can be found 
 
 The Server needs to be initialized with ValueSets using the [SLS Load ValueSets Operation Definition](OperationDefinition-sls-load-valuesets.html). This operation populates the server with the necessary ValueSets for proper functioning.
 
+### ValueSet Profile
+
+The ValueSets passed in need to be compliant with the [SLS ValueSet Profile](StructureDefinition-SlsValueSet.html). This profile ensures that the ValueSets contain the necessary metadata and structure for use in the SLS framework.
+
 ## Tagging Data Operation
 
 The Server supports tagging data with legal tags using the [SLS Tag Data Operation Definition](OperationDefinition-sls-tag.html). This operation allows for the application of legal tags to FHIR resources, ensuring compliance with the SLS framework.
