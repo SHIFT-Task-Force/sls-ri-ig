@@ -8,19 +8,22 @@ For discussion of the [SLS and ValueSets](https://build.fhir.org/ig/SHIFT-Task-F
 
 Example Patient Data [SHIFT Demo Scenarios IG](https://build.fhir.org/ig/SHIFT-Task-Force/demo-fhir-data)
 
-## CapabilityStatement
+### CapabilityStatement
 
 The Server CapabilityStatement for this FHIR Server implementation can be found here: [CapabilityStatement](CapabilityStatement-fhir-sls-server.html). This is a `Requirements` CapabilityStatement that outlines the required functionalities for any FHIR server implementing the SLS Reference Implementation.
 
-## Initialization Operation
+### Initialization Operation
 
 The Server needs to be initialized with ValueSets using the [SLS Load ValueSets Operation Definition](OperationDefinition-sls-load-valuesets.html). This operation populates the server with the necessary ValueSets for proper functioning.
 
-### ValueSet Profile
+#### ValueSet Profile
 
 The ValueSets passed in need to be compliant with the [SLS ValueSet Profile](StructureDefinition-SlsValueSet.html). This profile ensures that the ValueSets contain the necessary metadata and structure for use in the SLS framework.
 
-## Tagging Data Operation
+### Tagging Data Operation
 
 The Server supports tagging data with legal tags using the [SLS Tag Data Operation Definition](OperationDefinition-sls-tag.html). This operation allows for the application of legal tags to FHIR resources, ensuring compliance with the SLS framework.
 
+### Considerations for Implementing the SLS RI
+
+See informative discussion in [Considerations for Implementing the SLS RI](considerations.html)

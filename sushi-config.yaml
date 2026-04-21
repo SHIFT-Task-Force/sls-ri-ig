@@ -42,6 +42,8 @@ parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+
 pages:
   index.md:
     title: "SHIFT SLS-IG Home"
+  considerations.md:
+    title: "Considerations for Implementing the SLS RI"
   download.md:
     title: "About and Download"
 
