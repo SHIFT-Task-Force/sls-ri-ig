@@ -21,14 +21,59 @@ There are a few ways to apply the SLS RI:
 
 This is the most comprehensive approach, ensuring that all data is tagged appropriately. However, it may have performance implications due to the need to tag every resource. It also relies on the system being able to persist the tags with the data. This approach also must retag data when the tagging policy (e.g. SLS ValueSets) changes.
 
-#### Executed on demand when a Patient is accessed
+```mermaid
+flowchart TD
+    A[Data Creation/Update] --> B[SLS RI Tagging]
+    B --> C[(Persist Tags with Data)]
+    C --> D[Data with Tags]
+    E[Access Request]
+    E --> F[Apply Consent Rules]
+    classDef service fill:#E6F7FF,stroke:#0369A1,stroke-width:2px,color:#0C4A6E
+    class B service
+```
 
-When a Patient is accessed, a task examines all of that Patient's data and applies the appropriate tags. This approach allows for dynamic tagging based on the current state of the data and the applicable access control policies. However, it may lead to performance issues due to the need to tag data at the time of access, which could introduce latency. It also relies on the system being able to persist the tags with the data. This approach has the benefit of not changing data to add tags unless that Patient is actively being accessed. Thus historic patients that are no longer being accessed would not need to be tagged.
+#### Executed on demand when a Patient's data are accessed
+
+When a Patient's data are accessed, a task examines all of that Patient's data and applies the appropriate tags. This approach allows for dynamic tagging based on the current state of the data and the applicable access control policies. However, it may lead to performance issues due to the need to tag data at the time of access, which could introduce latency. It also relies on the system being able to persist the tags with the data. This approach has the benefit of not changing data to add tags unless that Patient is actively being accessed. Thus historic patients that are no longer being accessed would not need to be tagged.
+
+```mermaid
+flowchart TD
+    A[Any Access to the Patient data] --> B[Inspect All Patient Data with SLS RI Tagging]
+    B --> C{Any Tags Changed?}
+    C -- Yes --> E[(Persist Changed Tags)]
+    C -- No --> D[Process Access Request]
+    E --> D
+    D --> F[Apply Consent Rules]
+    classDef service fill:#E6F7FF,stroke:#0369A1,stroke-width:2px,color:#0C4A6E
+    class B service
+```
 
 #### Executed on demand with each Search with writeback
 
 When a search is executed, the SLS RI is executed to inspect the Search Bundle and any new tags are written back to the database. This approach allows for dynamic tagging based on the current state of the data and the applicable access control policies at the time of search. However, it may lead to significant performance issues due to the need to tag data at the time of search, which could introduce latency. It also relies on the system being able to persist the tags with the data. This approach has the benefit of not changing data to add tags unless that data is actively being searched for. This inspection of the Search Bundle would only be done if the Access Control decision has residual rules to further remove categories of sensitive data. 
 
+```mermaid
+flowchart TD
+    A[Search Executed] --> B[SLS RI Tagging of data in Bundle]
+    B --> C[(Persist Tags that changed)]
+    C --> D[Bundled Data with Tags]
+    D --> F[Apply Consent Rules]
+
+    classDef service fill:#E6F7FF,stroke:#0369A1,stroke-width:2px,color:#0C4A6E
+    class B service
+```
+
 #### Executed on demand with each Search doing only inline tagging
 
 When a search is executed, the SLS RI is executed to inspect the Search Bundle and any new tags are only added to the Search Bundle in memory and not written back to the database. This approach allows for dynamic tagging based on the current state of the data and the applicable access control policies at the time of search without changing the underlying data. However, it may lead to performance issues due to the need to tag data at the time of search, which could introduce latency. This approach has the benefit of not changing data to add tags unless that data is actively being searched for and does not require that the system be able to persist the tags with the data. This inspection of the Search Bundle would only be done if the Access Control decision has residual rules to further remove categories of sensitive data.
+
+```mermaid
+flowchart TD
+    A[Search Executed] --> B[SLS RI Tagging of data in Bundle]
+    B --> C[Add Tags to Search Bundle in Memory]
+    C --> D[Search Bundle with Tags Only - Not Persisted]
+    D --> F[Apply Consent Rules]
+
+    classDef service fill:#E6F7FF,stroke:#0369A1,stroke-width:2px,color:#0C4A6E
+    class B service
+```

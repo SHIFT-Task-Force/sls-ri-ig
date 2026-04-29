@@ -53,6 +53,7 @@ pages:
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
+  Using RI: considerations.html
   Artifacts: artifacts.html
   About: download.html
 
