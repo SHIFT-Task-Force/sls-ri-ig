@@ -4,11 +4,8 @@
 # (And include comments like this justifying why)
 # See https://github.com/FHIR/sample-ig/blob/master/input/ignoreWarnings.txt for examples
 
-# inherited problem from core
-MSG_DEPENDS_ON_DEPRECATED
-
 # want it fixed
 SD_VALUE_COMPLEX_FIXED
 
 # Don't need OID 
-%should have an OID assigned to cater for possible use with OID based terminology systems%
+%could usefully have an OID assigned%
