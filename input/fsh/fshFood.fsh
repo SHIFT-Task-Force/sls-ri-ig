@@ -55,6 +55,7 @@ Description: "ValueSet for mental health conditions used in the SLS RI. This Val
 * date = "2024-01-01T00:00:00Z"
 * useContext[SLS-tag].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ActCode#PSY
 * expansion.timestamp = "2024-01-01T00:00:00Z"
+* expansion.identifier = "urn:uuid:123e4567-e89b-12d3-a456-426614174000"
 * expansion.contains[0].system = "http://snomed.info/sct"
 * expansion.contains[=].code = #35489007
 * expansion.contains[=].display = "Depressive disorder"
@@ -79,6 +80,7 @@ Description: "ValueSet for substance abuse conditions used in the SLS RI. This V
 * date = "2024-01-01T00:00:00Z"
 * useContext[SLS-tag].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ActCode#ETH
 * expansion.timestamp = "2024-01-01T00:00:00Z"
+* expansion.identifier = "urn:uuid:123e4567-e89b-12d3-a456-426614174001"
 * expansion.contains[0].system = "http://snomed.info/sct"
 * expansion.contains[=].code = #191816009
 * expansion.contains[=].display = "Alcohol abuse"
@@ -105,6 +107,7 @@ Description: "ValueSet for behavioral health conditions that span multiple topic
 * useContext[SLS-tag][+].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ActCode#SUD
 * useContext[SLS-tag][+].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ActCode#BH
 * expansion.timestamp = "2024-01-01T00:00:00Z"
+* expansion.identifier = "urn:uuid:123e4567-e89b-12d3-a456-426614174002"
 * expansion.contains[0].system = "http://snomed.info/sct"
 * expansion.contains[=].code = #66214007
 * expansion.contains[=].display = "Substance abuse (disorder)"
