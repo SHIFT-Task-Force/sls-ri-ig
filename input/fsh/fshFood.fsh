@@ -43,44 +43,74 @@ Profile for ValueSets used in the SLS RI
 
 Instance: mental-health-conditions
 InstanceOf: SlsValueSet
-Title: "Mental Health Conditions ValueSet"
-Description: "ValueSet for mental health conditions used in the SLS RI. This ValueSet includes codes for mental health conditions that are relevant to the SLS use cases."
+Title: "ValueSet: Single topic with both definition and expansion"
+Description: """
+This ValueSet includes the definition of the ValueSet (compose include), and the expansion. Note that the display values are not necessary but are included in the compose include to confirm that the codes are what was intended by the display values.
+
+ValueSet for mental health conditions used in the SLS RI. This ValueSet includes codes for mental health conditions that are relevant to the SLS use cases.
+"""
 * url = "http://example.org/fhir/ValueSet/mental-health-conditions"
 * version = "1.0.0"
 * experimental = false
 * name = "MentalHealthConditions"
-* title = "Mental Health Conditions"
-* description = "ValueSet for mental health conditions used in the SLS RI. This ValueSet includes codes for mental health conditions that are relevant to the SLS use cases."
+* title = "ValueSet: Single topic with both definition and expansion"
+* description = """
+This ValueSet includes the definition of the ValueSet (compose include), and the expansion. Note that the display values are not necessary but are included in the compose include to confirm that the codes are what was intended by the display values.
+
+Because the expansion is specified the expansion parameter used-codesystem is included to indicate which code system was used in the expansion. The expansion timestamp and an identifier are also provided.
+
+ValueSet for mental health conditions used in the SLS RI. This ValueSet includes codes for mental health conditions that are relevant to the SLS use cases.
+"""
 * status = #active
 * date = "2024-01-01T00:00:00Z"
 * useContext[SLS-tag].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ActCode#PSY
+* compose.inactive = true
+* compose.include[0].system = "http://snomed.info/sct"
+* compose.include[=].concept[+].code = #35489007
+* compose.include[=].concept[=].display = "Depressive disorder"
+* compose.include[=].concept[+].code = #197480006
+* compose.include[=].concept[=].display = "Anxiety disorder"
+* compose.include[=].concept[+].code = #58214004
+* compose.include[=].concept[=].display = "Schizophrenia"
 * expansion.timestamp = "2024-01-01T00:00:00Z"
 * expansion.identifier = "urn:uuid:123e4567-e89b-12d3-a456-426614174000"
+* expansion.parameter[+].name = "used-codesystem"
+* expansion.parameter[=].valueUri = "http://snomed.info/sct|20250201"
 * expansion.contains[0].system = "http://snomed.info/sct"
 * expansion.contains[=].code = #35489007
-* expansion.contains[=].display = "Depressive disorder"
 * expansion.contains[+].system = "http://snomed.info/sct"
 * expansion.contains[=].code = #197480006
-* expansion.contains[=].display = "Anxiety disorder"
 * expansion.contains[+].system = "http://snomed.info/sct"
 * expansion.contains[=].code = #58214004
-* expansion.contains[=].display = "Schizophrenia"
 
 Instance: substance-abuse
 InstanceOf: SlsValueSet
-Title: "Substance Abuse Conditions ValueSet"
-Description: "ValueSet for substance abuse conditions used in the SLS RI. This ValueSet includes codes for substance abuse conditions that are relevant to the SLS use cases."
+Title: "ValueSet: Single topic with only expansion"
+Description: """
+This ValueSet includes only the expansion, not the valueSet definition. Not sure this is valid, but it is all that the SLS-RI needs.
+
+Because the expansion is specified the expansion parameter used-codesystem is included to indicate which code system was used in the expansion. The expansion timestamp and an identifier are also provided.
+
+ValueSet for substance abuse conditions used in the SLS RI. This ValueSet includes codes for substance abuse conditions that are relevant to the SLS use cases.
+"""
 * url = "http://example.org/fhir/ValueSet/substance-abuse"
 * version = "1.0.0"
 * experimental = false
 * name = "SubstanceAbuse"
-* title = "Substance Abuse Conditions"
-* description = "ValueSet for substance abuse conditions used in the SLS RI. This ValueSet includes codes for substance abuse conditions that are relevant to the SLS use cases."
+* title = "ValueSet: Single topic with only expansion"
+* description = """
+This ValueSet includes only the expansion, not the valueSet definition. Not sure this is valid, but it is all that the SLS-RI needs.
+
+ValueSet for substance abuse conditions used in the SLS RI. This ValueSet includes codes for substance abuse conditions that are relevant to the SLS use cases.
+"""
 * status = #active
 * date = "2024-01-01T00:00:00Z"
 * useContext[SLS-tag].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ActCode#ETH
+//* compose.inactive = true
 * expansion.timestamp = "2024-01-01T00:00:00Z"
 * expansion.identifier = "urn:uuid:123e4567-e89b-12d3-a456-426614174001"
+* expansion.parameter[+].name = "used-codesystem"
+* expansion.parameter[=].valueUri = "http://snomed.info/sct|20250201"
 * expansion.contains[0].system = "http://snomed.info/sct"
 * expansion.contains[=].code = #191816009
 * expansion.contains[=].display = "Alcohol abuse"
@@ -93,24 +123,34 @@ Description: "ValueSet for substance abuse conditions used in the SLS RI. This V
 
 Instance: behavioral-health-multi-topic
 InstanceOf: SlsValueSet
-Title: "Behavioral Health - Multiple Topics ValueSet"
-Description: "ValueSet for behavioral health conditions that span multiple topics used in the SLS RI. This ValueSet includes codes for behavioral health conditions that are relevant to the SLS use cases and may span multiple topics such as mental health, substance abuse, and psychotherapy notes."
+Title: "ValueSet: Multiple Topics with no expansion"
+Description: """
+This ValueSet covers multiple sensitive topics, showing that the topic can have multiple values associated with it.
+
+This ValueSet does not include the expansion, so the SLS would expand this upon importing this ValueSet. This does get the most up-to-date expansion, but because it updates the expansion timestamp may result in reevaluating previously tagged resources that don't need to be reevaluated.
+
+ValueSet for behavioral health conditions that span multiple topics used in the SLS RI. This ValueSet includes codes for behavioral health conditions that are relevant to the SLS use cases and may span multiple topics such as mental health, substance abuse, and psychotherapy notes.
+"""
 * url = "http://example.org/fhir/ValueSet/behavioral-health-multi-topic"
 * version = "1.0.0"
 * name = "BehavioralHealthMultiTopic"
-* title = "Behavioral Health - Multiple Topics"
+* title = "ValueSet: Multiple Topics with no expansion"
 * status = #active
 * experimental = false
-* description = "ValueSet for behavioral health conditions that span multiple topics used in the SLS RI. This ValueSet includes codes for behavioral health conditions that are relevant to the SLS use cases and may span multiple topics such as mental health, substance abuse, and psychotherapy notes."
+* description = """
+This ValueSet covers multiple sensitive topics, showing that the topic can have multiple values associated with it.
+
+This ValueSet does not include the expansion, so the SLS would expand this upon importing this ValueSet. This does get the most up-to-date expansion, but because it updates the expansion timestamp may result in reevaluating previously tagged resources that don't need to be reevaluated.
+
+ValueSet for behavioral health conditions that span multiple topics used in the SLS RI. This ValueSet includes codes for behavioral health conditions that are relevant to the SLS use cases and may span multiple topics such as mental health, substance abuse, and psychotherapy notes.
+"""
 * date = "2024-01-01T00:00:00Z"
 * useContext[SLS-tag][+].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ActCode#PSYTHPN
 * useContext[SLS-tag][+].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ActCode#SUD
 * useContext[SLS-tag][+].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ActCode#BH
-* expansion.timestamp = "2024-01-01T00:00:00Z"
-* expansion.identifier = "urn:uuid:123e4567-e89b-12d3-a456-426614174002"
-* expansion.contains[0].system = "http://snomed.info/sct"
-* expansion.contains[=].code = #66214007
-* expansion.contains[=].display = "Substance abuse (disorder)"
-* expansion.contains[+].system = "http://snomed.info/sct"
-* expansion.contains[=].code = #74732009
-* expansion.contains[=].display = "Mental disorder"
+* compose.inactive = true
+* compose.include[0].system = "http://snomed.info/sct"
+* compose.include[=].concept[+].code = #66214007
+* compose.include[=].concept[=].display = "Substance abuse (disorder)"
+* compose.include[=].concept[+].code = #74732009
+* compose.include[=].concept[=].display = "Mental disorder"
